@@ -105,7 +105,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests(). //
                 antMatchers("/api/authenticated").permitAll().//
                 antMatchers("/**").authenticated(). //
-                antMatchers("/swagger-ui/index.html").hasAuthority("ROLE_ADMIN");
+                antMatchers("/swagger-ui.html").hasAuthority("ROLE_ADMIN");
     }
 
     @Bean
