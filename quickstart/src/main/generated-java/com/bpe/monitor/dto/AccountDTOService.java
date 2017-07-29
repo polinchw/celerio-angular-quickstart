@@ -99,6 +99,8 @@ public class AccountDTOService {
 
         account.setPassword(dto.password);
 
+        account.setRole(dto.role);
+
         return toDTO(accountRepository.save(account));
     }
 
@@ -130,6 +132,7 @@ public class AccountDTOService {
         dto.firstName = account.getFirstName();
         dto.lastName = account.getLastName();
         dto.password = account.getPassword();
+        dto.role = account.getRole();
         if (depth-- > 0) {
         }
 
@@ -160,6 +163,7 @@ public class AccountDTOService {
         account.setFirstName(dto.firstName);
         account.setLastName(dto.lastName);
         account.setPassword(dto.password);
+        account.setRole(dto.role);
         if (depth-- > 0) {
         }
 

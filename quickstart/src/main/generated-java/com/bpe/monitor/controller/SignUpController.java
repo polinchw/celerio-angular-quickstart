@@ -37,6 +37,7 @@ public class SignUpController {
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public @ResponseBody Account signUp(@RequestBody Account account) throws Exception {
 	    account.setPassword(passwordEncoder.encode(account.getPassword()));
+	    account.setRole("USER");
 		accountRepository.save(account);
 		Account result = accountRepository.findByEmail(account.getEmail());
 		log.info("Result: "+result);

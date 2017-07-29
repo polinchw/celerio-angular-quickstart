@@ -16,6 +16,7 @@ public class AccountDTO {
     public String firstName;
     public String lastName;
     public String password;
+    public String role;
 
     @JsonIgnore
     public boolean isIdSet() {
