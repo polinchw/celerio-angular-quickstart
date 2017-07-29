@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Signs up a new user with an account.
+ *
  * Created by polinchakb on 9/29/16.
  */
 @RestController
-public class AccountController {
+public class SignUpController {
 
-	private static Logger log = LoggerFactory.getLogger(AccountController.class);
+	private static Logger log = LoggerFactory.getLogger(SignUpController.class);
 
 	@Autowired
     private AccountRepository accountRepository;
@@ -26,6 +28,12 @@ public class AccountController {
 	@Autowired
     private PasswordEncoder passwordEncoder;
 
+    /**
+     * Call this api to sign up a new user.  Auth is disabled for this so anyone can call it.
+     * @param account The new Account
+     * @return The newly created account.
+     * @throws Exception If something breaks.
+     */
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public @ResponseBody Account signUp(@RequestBody Account account) throws Exception {
 	    account.setPassword(passwordEncoder.encode(account.getPassword()));
