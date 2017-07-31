@@ -75,6 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 antMatchers("/signup"). //
                 antMatchers("/*.{js,html}"). //
                 antMatchers("/img/**"). //
+                antMatchers("/health"). //
                 antMatchers("/v2/api-docs"). //
                 antMatchers("/node_modules/**"). //
                 antMatchers("/**/*.{js,html,css}");
