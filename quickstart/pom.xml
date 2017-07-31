@@ -16,6 +16,12 @@
         <version>1.5.4.RELEASE</version>
     </parent>
 
+    <scm>
+        <connection>scm:git:git@github.com:polinchw/celerio-angular-quickstart.git</connection>
+        <url>scm:git:git@github.com:polinchw/celerio-angular-quickstart.git</url>
+        <developerConnection>scm:git:git@github.com:polinchw/celerio-angular-quickstart.git</developerConnection>
+    </scm>
+
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following message: -->
         <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
@@ -278,6 +284,34 @@
                         <imageTag>latest</imageTag>
                     </imageTags>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>tag-image-version</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.prefix}/${project.artifactId}</image>
+                            <newName>docker.io/${docker.image.prefix}/${project.artifactId}:${project.version}</newName>
+                            <serverId>docker-hub</serverId>
+                            <pushImage>true</pushImage>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>tag-image-latest</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.prefix}/${project.artifactId}</image>
+                            <newName>docker.io/${docker.image.prefix}/${project.artifactId}:latest</newName>
+                            <serverId>docker-hub</serverId>
+                            <pushImage>true</pushImage>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <!-- Copy Dockerfile -->
             <plugin>
@@ -541,4 +575,17 @@
             </build>
         </profile>
     </profiles>
+    <distributionManagement>
+        <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>central</id>
+            <name>earthlink-release</name>
+            <url>http://dev-brimful.eus.elnk.net:8080/artifactory-earthlinkbusiness/earthlink-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>earthlink-snapshots</name>
+            <url>http://dev-brimful.eus.elnk.net:8080/artifactory-earthlinkbusiness/earthlink-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
