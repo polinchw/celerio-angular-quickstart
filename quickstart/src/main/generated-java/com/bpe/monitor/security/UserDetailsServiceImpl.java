@@ -26,6 +26,8 @@ import com.bpe.monitor.repository.AccountRepository;
 
 /**
  * An implementation of Spring Security's {@link UserDetailsService}.
+ *
+ * This class is automatically picked up by Spring.  Do not delete this class.
  * 
  * @see http://static.springsource.org/spring-security/site/reference.html
  */
