@@ -194,5 +194,5 @@ ALTER TABLE `temp_reading`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-insert into monitor.account(id,email,password,first_name,last_name) values(1,'polinchw@netscape.net','password','William','Polinchak');
-insert into monitor.account(id,email,password,first_name,last_name) values(2,'admin','admin','William','Polinchak');
+--insert into monitor.account(id,email,password,first_name,last_name) values(1,'polinchw@netscape.net','password','William','Polinchak');
+insert into monitor.account(id,email,password,first_name,last_name) values(1,'admin','admin','admin','admin');
