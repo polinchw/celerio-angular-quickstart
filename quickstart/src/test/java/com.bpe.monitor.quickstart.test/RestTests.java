@@ -25,8 +25,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = RANDOM_PORT)
-@ActiveProfiles("test")
-@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
+//@ActiveProfiles("test")
+//@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class RestTests {
 
     private static final Logger log = LoggerFactory.getLogger(RestTests.class);
@@ -37,7 +37,7 @@ public class RestTests {
     @Test
     public void testSignUp() throws Exception {
         Account account = new Account();
-        account.setEmail("polinchw@netscape.net");
+        account.setEmail("polinchw@gmail.net");
         account.setFirstName("Bill");
         account.setLastName("Polinchak");
         account.setPassword("password");

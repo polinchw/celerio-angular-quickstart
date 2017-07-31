@@ -43,6 +43,7 @@ public class Account implements Identifiable<Long>, Serializable {
     private String firstName;
     private String lastName;
     private String password;
+    private String role;
 
     private List<Device> devices;
 
@@ -76,12 +77,13 @@ public class Account implements Identifiable<Long>, Serializable {
     @Transient
     public List<String> getRoleNames() {
         List<String> roleNames = new ArrayList<String>();
-        if ("user".equalsIgnoreCase(getEmail())) {
-            roleNames.add("ROLE_USER");
-        } else if ("admin".equalsIgnoreCase(getEmail())) {
-            roleNames.add("ROLE_USER");
-            roleNames.add("ROLE_ADMIN");
-        }
+//        if ("user".equalsIgnoreCase(getEmail())) {
+//            roleNames.add("ROLE_USER");
+//        } else if ("admin".equalsIgnoreCase(getEmail())) {
+//            roleNames.add("ROLE_USER");
+//            roleNames.add("ROLE_ADMIN");
+//        }
+        roleNames.add("ROLE_"+role);
 
         log.warning("Returning hard coded role names. TODO: get the real role names");
         return roleNames;
@@ -179,6 +181,16 @@ public class Account implements Identifiable<Long>, Serializable {
     public Account password(String password) {
         setPassword(password);
         return this;
+    }
+
+    @Size(max = 255)
+    @Column(name = "role")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     /**

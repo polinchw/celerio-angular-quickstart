@@ -234,6 +234,7 @@
             </resource>
         </resources>
 
+
         <testResources>
             <testResource>
                 <directory>${celerio-maven-plugin.outputDir}/src/test/resources</directory>

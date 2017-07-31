@@ -64,7 +64,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(encoder()).usersByUsernameQuery("select email as principal, password as credentials, true from account where email = ?")
-                .authoritiesByUsernameQuery("select email as principal, email as role from account where email = ?");
+                .authoritiesByUsernameQuery("select email as principal, role as role from account where email = ?").rolePrefix("ROLE_");
     }
 
     @Override
@@ -75,6 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 antMatchers("/signup"). //
                 antMatchers("/*.{js,html}"). //
                 antMatchers("/img/**"). //
+                antMatchers("/v2/api-docs"). //
                 antMatchers("/node_modules/**"). //
                 antMatchers("/**/*.{js,html,css}");
     }
@@ -105,7 +106,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 authorizeRequests(). //
                 antMatchers("/api/authenticated").permitAll().//
                 antMatchers("/**").authenticated(). //
-                antMatchers("/swagger-ui/index.html").hasAuthority("ROLE_ADMIN");
+                antMatchers("/swagger-ui.html").hasAuthority("ROLE_ADMIN");
     }
 
     @Bean
