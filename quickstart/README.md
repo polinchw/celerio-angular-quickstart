@@ -204,10 +204,10 @@ docker run -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=dev-local" --net=host polinch
 Reference this Git project to help you deploy this in a Docker Swarm on AWS.
 https://github.com/polinchw/docker-tools
 
-### Docker Swarm AWS creation
+#### Docker Swarm AWS creation
 ./docker-tools/docker-machine/docker-swarm/aws/bash-scripts/create-swarm-instances.sh AKIAJB7DZD4I6QA2XBRA xxx vpc-9dc174e4 subnet-8102b5ad polinchw app-tier 1 ami-8887be9e AppSecurityGroup
 
 
-### Docker Machine
+#### Docker Machine
 docker-machine ssh app-tier-swarm-master 'docker service create -e "SPRING_PROFILES_ACTIVE=aws-dev" -e "JASYPT_ENCRYPTOR_PASSWORD=xxx" --replicas 2 --name monitor-crud -p 8080:8080 polinchw/celerio-angular-quickstart'
 
